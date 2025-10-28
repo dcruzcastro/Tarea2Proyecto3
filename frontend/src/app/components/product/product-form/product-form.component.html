@@ -1,6 +1,9 @@
+
+
+
 <form [formGroup]="form">
   <div>
-    <h2 class="mb-0">{{ isEdit ? 'Edit Gift' : 'Add Gift to Gift List' }}</h2>
+    <h2 class="mb-0">{{ isEdit ? 'Edit Product' : 'Add Product to Category' }}</h2>
   </div>
   <div class="row">
     <div class="col-md-6">
@@ -19,19 +22,19 @@
       </div>
     </div>
   </div>
-  @if (showGiftListSelector) {
+  @if (showCategorySelector) {
     <div class="row">
       <div class="col-md-12">
         <div class="mb-2">
-          <label class="mb-1" for="giftListId">Gift List*</label>
-          <select id="giftListId" formControlName="giftListId" class="form-control">
-            <option value="">Select a Gift List</option>
-            @for (giftList of giftLists; track giftList.id) {
-              <option [value]="giftList.id">{{ giftList.name }}</option>
+          <label class="mb-1" for="categoryId">Category*</label>
+          <select id="categoryId" formControlName="categoryId" class="form-control">
+            <option value="">Select a Category</option>
+            @for (category of categories; track category.id) {
+              <option [value]="category.id">{{ category.name }}</option>
             }
           </select>
-          @if (form.controls['giftListId'].invalid && (form.controls['giftListId'].dirty || form.controls['giftListId'].touched)) {
-            <p class="text-danger my-1 p-absolute">Gift List is required</p>
+          @if (form.controls['categoryId'].invalid && (form.controls['categoryId'].dirty || form.controls['categoryId'].touched)) {
+            <p class="text-danger my-1 p-absolute">Category is required</p>
           }
         </div>
       </div>
@@ -46,20 +49,22 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <div class="mb-2">
-        <label class="mb-1" for="imageUrl">Image URL</label>
-        <input id="imageUrl" formControlName="imageUrl" type="text" class="form-control">
+        <label class="mb-1" for="stock">Stock</label>
+        <input id="stock" formControlName="stock" type="number" step="0.01" class="form-control">
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-12 d-flex justify-content-end mt-3">
       <div class="">
-        @if(areActionsAvailable){<button (click)="callSaveMethod.emit(form.value)" [disabled]="form.invalid" class="btn btn-primary" type="button">
-          {{ isEdit ? 'Update' : 'Add Gift' }}
+       @if(areActionsAvailable){<button (click)="callSaveMethod.emit(form.value)" [disabled]="form.invalid" class="btn btn-primary" type="button">
+          {{ isEdit ? 'Update' : 'Add Product' }}
         </button>}
       </div>
     </div>
   </div>
 </form>
+
+

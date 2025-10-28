@@ -1,9 +1,9 @@
-.gift-list-container {
+.category-container {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   padding: 16px;
-  .gift-list-item {
+  .category-item {
     border-radius: 20px;
     background: #f7f8f9;
     box-shadow:  20px 20px 60px #d2d3d4,
@@ -14,9 +14,11 @@
       font-size: 16px;
       font-weight: 600;
       color: #333;
+      padding: 10px;
     }
     .description {
       font-size: 14px;
+      padding: 10px;
       color: #666;
     }
   }

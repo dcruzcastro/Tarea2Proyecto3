@@ -9,6 +9,7 @@ import { GiftFormComponent } from '../../components/gift/gift-form/gift-form.com
 import { GiftsTableComponent } from '../../components/gift/gifts-table/gifts-table.component';
 import { LoaderComponent } from '../../components/loader/loader.component';
 import { PaginationComponent } from '../../components/pagination/pagination.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-gift-list-gifts',
@@ -26,8 +27,10 @@ export class GiftListGiftsComponent implements OnInit {
   public giftService: GiftService = inject(GiftService);
   public giftListService: GiftListService = inject(GiftListService);
   public fb: FormBuilder = inject(FormBuilder);
-  private route: ActivatedRoute = inject(ActivatedRoute);
-  
+  public areActionsAvailable: boolean = false;
+  public authService: AuthService = inject(AuthService);
+  public route: ActivatedRoute = inject(ActivatedRoute);
+
   public giftListId: number = 0;
   public currentGiftList?: IGiftList;
   public isEdit: boolean = false;
@@ -47,6 +50,12 @@ export class GiftListGiftsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.giftListService.getAll();
+    this.giftService.getAll();
+    this.route.data.subscribe( data => {
+      this.areActionsAvailable = this.authService.areActionsAvailable(data['authorities'] ? data['authorities'] : []);
+      console.log('areActionsAvailable', this.areActionsAvailable);
+    });
     this.route.params.subscribe(params => {
       this.giftListId = +params['id'];
       if (this.giftListId) {

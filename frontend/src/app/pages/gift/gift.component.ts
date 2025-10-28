@@ -22,6 +22,7 @@ import { IGiftList } from '../../interfaces';
 export class GiftComponent {
   public giftListService: GiftListService = inject(GiftListService);
   public fb: FormBuilder = inject(FormBuilder);
+  public areActionsAvailable: boolean = false;
   public form = this.fb.group({
     id: [0],
     name: ['', Validators.required],
@@ -32,7 +33,8 @@ export class GiftComponent {
     effect(() => {
       console.log('gift lists updated', this.giftListService.giftsLists$());
       if (this.giftListService.giftsLists$()[0]) {
-        this.giftListService.giftsLists$()[0] ?  this.giftListService.giftsLists$()[0].name = `${this.giftListService.giftsLists$()[0].name} - Caros` : null;
+        this.giftListService.giftsLists$()[0] ?  this.giftListService.giftsLists$()[0].name = `${this.giftListService.giftsLists$()[0].name}` : null;
+        this.giftListService.giftsLists$()[0] ?  this.giftListService.giftsLists$()[0].description = `${this.giftListService.giftsLists$()[0].description}` : null;
       }
     });
   }

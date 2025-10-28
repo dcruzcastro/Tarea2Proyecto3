@@ -16,8 +16,11 @@ import { PreferenceListPageComponent } from './pages/preference-list/preference-
 import { SportTeamComponent } from './pages/sport-team/sport-team.component';
 import { CalculatorComponent } from './pages/calculator/calculator.component';
 import { GiftComponent } from './pages/gift/gift.component';
+import { ProductsComponent } from './pages/products/products.component';
 import { GiftListGiftsComponent } from './pages/gift-list-gifts/gift-list-gifts.component';
 import { GiftsComponent } from './pages/gifts/gifts.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
+
 
 
 export const routes: Routes = [
@@ -164,6 +167,32 @@ export const routes: Routes = [
             IRoleType.user,
           ],
           name: 'Gifts',
+          showInSidebar: true
+        }
+      },
+      {
+        path: 'categories',
+        component: CategoriesComponent,
+        data: {
+          authorities: [
+            IRoleType.admin,
+            IRoleType.superAdmin,
+            IRoleType.user,
+          ],
+          name: 'Categories',
+          showInSidebar: true
+        }
+      },
+      {
+        path: 'products',
+        component: ProductsComponent,
+        data: {
+          authorities: [
+            IRoleType.admin,
+            IRoleType.superAdmin,
+            IRoleType.user,
+          ],
+          name: 'Products',
           showInSidebar: true
         }
       }

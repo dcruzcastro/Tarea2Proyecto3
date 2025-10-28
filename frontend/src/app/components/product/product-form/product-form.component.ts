@@ -1,23 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { IGift, IGiftList } from '../../../interfaces';
+import { IProduct, ICategory } from '../../../interfaces';
 
 @Component({
-  selector: 'app-gift-form',
+  selector: 'app-product-form',
   standalone: true,
   imports: [
     CommonModule,
     ReactiveFormsModule
   ],
-  templateUrl: './gift-form.component.html',
-  styleUrl: './gift-form.component.scss'
+  templateUrl: './product-form.component.html',
+  styleUrl: './product-form.component.scss'
 })
-export class GiftFormComponent {
+export class ProductFormComponent {
   @Input() form!: FormGroup;
   @Input() isEdit: boolean = false;
-  @Input() giftLists: IGiftList[] = [];
-  @Input() showGiftListSelector: boolean = true;
+  @Input() categories: ICategory[] = [];
+  @Input() showCategorySelector: boolean = true;
   @Input() areActionsAvailable: boolean = false;
-  @Output() callSaveMethod: EventEmitter<IGift> = new EventEmitter<IGift>();
+  @Output() callSaveMethod: EventEmitter<IProduct> = new EventEmitter<IProduct>();
 }

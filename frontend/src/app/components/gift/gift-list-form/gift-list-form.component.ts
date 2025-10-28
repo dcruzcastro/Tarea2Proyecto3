@@ -15,5 +15,6 @@ import { IGiftList } from '../../../interfaces';
 })
 export class GiftListFormComponent {
   @Input() form!: FormGroup;
+  @Input() areActionsAvailable: boolean = false;
   @Output() callSaveMethod: EventEmitter<IGiftList> = new EventEmitter<IGiftList>();
 }

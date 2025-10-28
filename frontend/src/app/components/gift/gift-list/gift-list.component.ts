@@ -6,10 +6,11 @@ import { IGiftList } from '../../../interfaces';
   standalone: true,
   imports: [],
   templateUrl: './gift-list.component.html',
-  styleUrl: './gift-list.component.scss'
+  styleUrls: ['./gift-list.component.scss']
 })
 export class GiftListComponent {
   @Input() giftsList: IGiftList[] = [];
+  @Input() areActionsAvailable: boolean = false;
   @Output() callEditMethod: EventEmitter<IGiftList> = new EventEmitter<IGiftList>();
   @Output() callDeleteMethod: EventEmitter<IGiftList> = new EventEmitter<IGiftList>();
 }

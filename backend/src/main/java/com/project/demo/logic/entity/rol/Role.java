@@ -14,9 +14,11 @@ public class Role {
     @Column(nullable = false)
     private Integer id;
 
+
     @Column(unique = true, nullable = false)
     @Enumerated(EnumType.STRING)
     private RoleEnum name;
+
 
     @Column(nullable = false)
     private String description;
